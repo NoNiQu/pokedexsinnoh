@@ -1,30 +1,43 @@
-//Dejo esto como comentario por si lo necestiamos en otro momento.
-// interface cardProps {
-//     id: number;
-//     nombre: string;
-//     faseEvolutiva: number;
-//     legendario: boolean;
-//     spriteMiniatura: string;
-// }
-
 import type { Pokemon } from "~/types/pokemon";
+import PokeballImage from "~/componentes/PokeballImage";
+import { Link } from "react-router-dom";
 
-interface cardProps {
-    pokemon: Pokemon;
+interface CardProps {
+  pokemon: Pokemon;
+  isSelected: boolean;
 }
 
-function Card({pokemon}:cardProps) {
+function Card({ pokemon, isSelected }: CardProps) {
   return (
-    <div className="flex items-center bg-amber-100 shadow-lg rounded-s-3xl rounded-e-md py-1 px-1">
-        <div className="bg-red-500 rounded-4xl relative w-12 h-12 flex items-center justify-center">
-            {/* <img src="" alt="" />   ESTO SERÁ LA IMAGEN DE LA POKEBALL, SEGÚN SU FASE EVOLUTIVA O SI ES LEGENDARIO */}
-            <img src={pokemon.spriteMiniatura} alt="sprite" className="absolute top-0 start-0"/>
-        </div>
-        <p className="px-5 text-xl font-bold">{String(pokemon.id).padStart(3, "0")}</p>
-        <p className="text-xl font-bold">{pokemon.nombre.toUpperCase()}</p>
-
+    <div
+      className={`flex items-center shadow-lg rounded-s-3xl rounded-e-md py-5 px-12 w-full ${
+        isSelected ? "bg-amber-200" : "bg-amber-100"
+      }`}
+      style={{ width: "700px" }}
+    >
+      <div className="flex items-center justify-start w-full">
+        <PokeballImage
+          legendario={pokemon.legendario}
+          faseEvolutiva={pokemon.faseEvolutiva}
+          spriteMiniatura={pokemon.spriteMiniatura}
+        />
+        <p className="px-5 text-xl font-bold text-black">
+          {String(pokemon.id).padStart(3, "0")}
+        </p>
+        <p className="text-xl font-bold text-black mr-5 truncate">
+          {pokemon.nombre.toUpperCase()}
+        </p>
+        {isSelected && (
+          <Link
+            to={`/descripcion/${pokemon.id}`}
+            className="bg-amber-500 text-white px-4 py-2 rounded-md ml-auto"
+          >
+            More information
+          </Link>
+        )}
+      </div>
     </div>
-  )
+  );
 }
 
-export default Card
+export default Card;
