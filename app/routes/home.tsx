@@ -1,4 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
+import Card from "~/componentes/card";
+import type { Pokemon } from "~/types/pokemon";
 
 const fetchPokemon = async () => {
   const res = await fetch("http://localhost:8080/api/pokedex_sinnoh");
@@ -32,35 +34,36 @@ const Home = () => {
 
   return (
     <div className="container mx-auto p-4 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-      {data.map((pokemon) => (
-        <div
-          key={pokemon.id}
-          className="bg-white shadow-lg rounded-lg p-4 flex items-center"
-        >
-          <div
-            className={`w-24 h-24 flex items-center justify-center rounded-lg ${
-              pokemon.legendario
-                ? "bg-purple-500"
-                : pokemon.faseEvolutiva === 1
-                ? "bg-red-500"
-                : pokemon.faseEvolutiva === 2
-                ? "bg-blue-500"
-                : "bg-black"
-            }`}
-          >
-            <img
-              src={pokemon.spriteMiniatura}
-              alt={pokemon.nombre}
-              className="w-16 h-16"
-            />
-          </div>
-          <div className="ml-4">
-            <h2 className="text-xl font-bold text-black">
-              {String(pokemon.id).padStart(3, "0")}{" "}
-              {pokemon.nombre.toUpperCase()}
-            </h2>
-          </div>
-        </div>
+      {data.map((pokemon: Pokemon) => (
+        <Card key={pokemon.id} pokemon={pokemon}></Card>
+        // <div
+        //   key={pokemon.id}
+        //   className="bg-white shadow-lg rounded-lg p-4 flex items-center"
+        // >
+        //   {/* <div
+        //     className={`w-24 h-24 flex items-center justify-center rounded-lg ${
+        //       pokemon.legendario
+        //         ? "bg-purple-500"
+        //         : pokemon.faseEvolutiva === 1
+        //         ? "bg-red-500"
+        //         : pokemon.faseEvolutiva === 2
+        //         ? "bg-blue-500"
+        //         : "bg-black"
+        //     }`}
+        //   >
+        //     <img
+        //       src={pokemon.spriteMiniatura}
+        //       alt={pokemon.nombre}
+        //       className="w-16 h-16"
+        //     />
+        //   </div>
+        //   <div className="ml-4">
+        //     <h2 className="text-xl font-bold text-black">
+        //       {String(pokemon.id).padStart(3, "0")}{" "}
+        //       {pokemon.nombre.toUpperCase()}
+        //     </h2>
+        //   </div> */}
+        // </div>
       ))}
     </div>
   );
