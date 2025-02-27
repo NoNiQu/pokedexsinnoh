@@ -13,15 +13,15 @@ function Card({ pokemon, isSelected }: CardProps) {
       className={`flex items-center shadow-lg rounded-s-3xl rounded-e-md py-5 px-12 w-full ${
         isSelected ? "bg-amber-200" : "bg-amber-100"
       }`}
-      style={{ width: "700px" }}
+      style={{ width: "650px" }}
     >
-      <div className="flex items-center justify-start w-full">
+      <div className="flex items-center w-full">
         <PokeballImage
           legendario={pokemon.legendario}
           faseEvolutiva={pokemon.faseEvolutiva}
           spriteMiniatura={pokemon.spriteMiniatura}
         />
-        <p className="px-5 text-xl font-bold text-black">
+        <p className="px-5 text-xl font-bold  text-black">
           {String(pokemon.id).padStart(3, "0")}
         </p>
         <p className="text-xl font-bold text-black mr-5 truncate">
@@ -30,7 +30,7 @@ function Card({ pokemon, isSelected }: CardProps) {
         {isSelected && (
           <Link
             to={`/descripcion/${pokemon.id}`}
-            className="bg-amber-500 text-white px-4 py-2 rounded-md ml-auto"
+            className="bg-amber-600 text-white px-4 py-2 rounded-md ml-auto"
           >
             More information
           </Link>
