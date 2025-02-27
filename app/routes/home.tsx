@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Card from "~/componentes/card";
 import type { Pokemon } from "~/types/pokemon";
+import Imagen from "~/componentes/image";
 import "./home.css"; // Importamos el CSS
 
 const fetchPokemon = async () => {
@@ -19,7 +20,8 @@ const Home = () => {
     queryFn: fetchPokemon,
   });
 
-  const [selectedPokemon, setSelectedPokemon] = useState<number | null>(null);
+  // Subimos al estado el Pokémon seleccionado entero.
+  const [selectedPokemon, setSelectedPokemon] = useState<Pokemon>(data[0]);
 
   useEffect(() => {
     if (data.length > 0 && selectedPokemon === null) {
@@ -39,21 +41,22 @@ const Home = () => {
   return (
     <div className="container mx-auto p-4 flex gap-8 text-white">
       {/* Imagen del Pokémon seleccionado */}
-      <div className="flex flex-col gap-4 items-center justify-center flex-grow">
+      {/* <div className="flex flex-col gap-4 items-center justify-center flex-grow">
         <img
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${selectedPokemon}.png`}
           alt="Pokemon"
           className="w-96 h-96 bg-white border-4 border-red-500"
         />
-      </div>
+      </div> */}
+      <Imagen imagen={selectedPokemon?.spritePlatino} tipos={selectedPokemon?.tipo}></Imagen>
 
       {/* Lista de Pokémon con scroll personalizado */}
       <div className="pokemon-list custom-scrollbar flex flex-col gap-4">
         {data.map((pokemon: Pokemon) => (
-          <div key={pokemon.id} onClick={() => setSelectedPokemon(pokemon.id)}>
+          <div key={pokemon.id} onClick={() => setSelectedPokemon(pokemon)}>
             <Card
               pokemon={pokemon}
-              isSelected={pokemon.id === selectedPokemon}
+              isSelected={pokemon.id === selectedPokemon?.id}
             />
           </div>
         ))}
