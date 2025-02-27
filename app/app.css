@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Pokemon";
+  src: url("pokemon-dp.woff2") format("woff2");
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -8,7 +13,8 @@
 html,
 body {
   @apply bg-white dark:bg-gray-950;
-
+  
+  font-family: Pokemon;
   background-color: chocolate;
 
   @media (prefers-color-scheme: dark) {

@@ -13,7 +13,7 @@ function Card({ pokemon, isSelected }: CardProps) {
       className={`flex items-center shadow-lg rounded-s-3xl rounded-e-md py-5 px-12 w-full ${
         isSelected ? "bg-amber-200" : "bg-amber-100"
       }`}
-      style={{ width: "650px" }}
+      style={{ width: "650px", fontSize: "1.5rem" }}
     >
       <div className="flex items-center w-full">
         <PokeballImage
@@ -21,10 +21,10 @@ function Card({ pokemon, isSelected }: CardProps) {
           faseEvolutiva={pokemon.faseEvolutiva}
           spriteMiniatura={pokemon.spriteMiniatura}
         />
-        <p className="px-5 text-xl font-bold  text-black">
+        <p className="px-5 text-5xl font-bold  text-black">
           {String(pokemon.id).padStart(3, "0")}
         </p>
-        <p className="text-xl font-bold text-black mr-5 truncate">
+        <p className="text-5xl font-bold text-black mr-5">
           {pokemon.nombre.toUpperCase()}
         </p>
         {isSelected && (
