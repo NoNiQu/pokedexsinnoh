@@ -1,9 +1,11 @@
+import { useQuery } from "@tanstack/react-query";
+
 interface ImagenProps {
     imagen?: string
     tipos?: string
 }
 
-function Imagen({imagen = '', tipos = ''}:ImagenProps) {
+function Imagen({imagen, tipos = ''}:ImagenProps) {
   const types:Record<string, string> = {
     "normal": "bg-gray-500 text-white",
     "fire": "bg-red-500 text-white",
@@ -24,7 +26,28 @@ function Imagen({imagen = '', tipos = ''}:ImagenProps) {
     "steel": "bg-gray-400",
   }
   
+  const fetchFirstPokemon = async () => {
+    const res = await fetch("http://localhost:8080/api/pokedex_sinnoh/1");
+    return res.json();
+  };
+
+  const {
+    data = [],
+  } = useQuery({
+    queryKey: ["pokemon"],
+    queryFn: fetchFirstPokemon,
+  });
+
+  if (imagen === undefined) {
+    console.log(data[0]);
+    imagen = data[0].spritePlatino;
+    tipos = data[0].tipo;
+  }
+
+
   const tiposArray = tipos.split(',');
+
+  console.log("Imagen: " + imagen);
 
   return (
     <div className="flex flex-col gap-4 items-center justify-center flex-grow">

@@ -22,6 +22,7 @@ const Home = () => {
 
   // Subimos al estado el Pokémon seleccionado entero.
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(data[0]);
+  
   // useEffect(() => {
   //   if (data.length > 0 && selectedPokemon === null) {
   //     setSelectedPokemon(data[0].id);
@@ -47,6 +48,7 @@ const Home = () => {
           className="w-96 h-96 bg-white border-4 border-red-500"
         />
       </div> */}
+      
       <Imagen
         imagen={selectedPokemon?.spritePlatino}
         tipos={selectedPokemon?.tipo}
