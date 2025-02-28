@@ -6,6 +6,7 @@
   background: #fbbf24; /* Color ámbar */
   padding: 16px;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 /* Estilos para la barra de desplazamiento en Chrome, Edge y Safari */

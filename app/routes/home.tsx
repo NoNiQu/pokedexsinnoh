@@ -48,7 +48,10 @@ const Home = () => {
           className="w-96 h-96 bg-white border-4 border-red-500"
         />
       </div> */}
-      <Imagen imagen={selectedPokemon?.spritePlatino} tipos={selectedPokemon?.tipo}></Imagen>
+      <Imagen
+        imagen={selectedPokemon?.spritePlatino}
+        tipos={selectedPokemon?.tipo}
+      ></Imagen>
 
       {/* Lista de Pokémon con scroll personalizado */}
       <div className="pokemon-list custom-scrollbar flex flex-col gap-4">
