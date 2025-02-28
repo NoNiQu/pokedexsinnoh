@@ -10,14 +10,26 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+img{
+  image-rendering: pixelated;
+}
+
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-sky-300;
   
   font-family: Pokemon;
-  background-color: chocolate;
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+  @media (prefers-color-scheme: platinum) {
+    color-scheme: platinum;
   }
+}
+
+@custom-variant diamond (&:where(.diamond, .diamond *));
+@custom-variant pearl (&:where(.pearl, .pearl *));
+@custom-variant platinum (&:where(.platinum, .platinum *));
+
+html,
+body {
+  @apply pearl:bg-pink-300 platinum:bg-amber-500 transition duration-300;
 }
