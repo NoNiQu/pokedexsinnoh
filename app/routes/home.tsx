@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Card from "~/componentes/card";
+// import Card from "~/componentes/card";
 import type { Pokemon } from "~/types/pokemon";
+import ListPokemon from "~/componentes/ListPokemon";
 import Imagen from "~/componentes/image";
 import Header from "~/componentes/header";
 import Footer from "~/componentes/footer";
@@ -53,18 +54,8 @@ const Home = () => {
             tipos={selectedPokemon.tipo}
           />
         )}
-
-        {/* Lista de Pokémon con scroll personalizado */}
-        <div className="pokemon-list custom-scrollbar flex flex-col gap-4">
-          {data.map((pokemon: Pokemon) => (
-            <div key={pokemon.id} onClick={() => setSelectedPokemon(pokemon)}>
-              <Card
-                pokemon={pokemon}
-                isSelected={pokemon.id === selectedPokemon?.id}
-              />
-            </div>
-          ))}
-        </div>
+        
+          <ListPokemon dataPokemon={data} selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon}></ListPokemon>
       </div>
 
       <Footer></Footer>
