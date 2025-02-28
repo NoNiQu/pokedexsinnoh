@@ -1,9 +1,9 @@
 interface ImagenProps {
-    imagen: string
-    tipos: string
+    imagen?: string
+    tipos?: string
 }
 
-function Imagen({imagen, tipos = ''}:ImagenProps) {
+function Imagen({imagen = '', tipos = ''}:ImagenProps) {
   const types:Record<string, string> = {
     "normal": "bg-gray-500 text-white",
     "fire": "bg-red-500 text-white",
