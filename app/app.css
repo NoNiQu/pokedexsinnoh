@@ -2,8 +2,9 @@
 
 @font-face {
   font-family: "Pokemon";
-  src: url("pokemon-dp.woff2") format("woff2");
+  src: url("/pokemon-dp.woff2") format("woff2"); /* Nota la barra "/" */
 }
+
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,

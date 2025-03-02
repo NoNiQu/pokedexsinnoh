@@ -50,19 +50,18 @@ const Descripcion = () => {
 
       <div className="container mx-auto p-4 text-white pb-20">
         <div className="flex justify-center gap-6 mb-6">
-
           <Imagen imagen={selectedPokemon.spritePlatino} />
-          
-          <div className="flex flex-col gap-4 w-4/7">
+          <div className="flex flex-col justify-between gap-4 w-4/7">
             <CabeceraPokemon pokemon={selectedPokemon}></CabeceraPokemon>
             <div className="ms-2">
               <Tipos tipos={selectedPokemon.tipo}></Tipos>
               <StatsPokemon pokemon={selectedPokemon}></StatsPokemon>
             </div>
-            <DescripcionPokemon descripcion={selectedPokemon.descripcionDiamantePerla}></DescripcionPokemon>
+            <DescripcionPokemon
+              descripcion={selectedPokemon.descripcionDiamantePerla}
+            ></DescripcionPokemon>
           </div>
         </div>
-        
       </div>
       <Footer></Footer>
     </>
