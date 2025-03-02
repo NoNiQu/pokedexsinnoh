@@ -7,7 +7,7 @@ function Imagen({ imagen }: ImagenProps) {
   if (!imagen) return null; // Evita errores si la imagen es undefined
 
   return (
-    <div className="border-8 border-white rounded-3xl">
+    <div className="border-8 border-white rounded-3xl w-fit">
       <img
         src={imagen}
         alt="Pokemon"

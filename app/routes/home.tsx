@@ -45,9 +45,9 @@ const Home = () => {
 
   return (
     <>
-      <Header titulo="POKéDEX SINNOH"></Header>
+      <Header titulo="POKéDEX SINNOH" search={true}></Header>
 
-      <div className="container mx-auto p-4 flex justify-between gap-8 text-white">
+      <div className="container mx-auto p-4 flex justify-between gap-8 text-white pb-20">
         <div className="flex flex-col gap-4 items-center justify-center flex-grow">
           {selectedPokemon && (
             <>
