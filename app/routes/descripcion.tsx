@@ -40,12 +40,14 @@ const Descripcion = () => {
       <h1 className="text-5xl font-bold mb-4">
         {selectedPokemon.nombre.toUpperCase()}
       </h1>
-      <Imagen
-        imagen={selectedPokemon.spritePlatino}
-        tipos={selectedPokemon.tipo}
-      />
+      <Imagen imagen={selectedPokemon.spritePlatino} />
       <p className="mt-4 text-lg">ID: {selectedPokemon.id}</p>
-      <p className="text-lg">Tipo: {selectedPokemon.tipo.join(", ")}</p>
+      <p className="text-lg">
+        Tipo:{" "}
+        {Array.isArray(selectedPokemon.tipo)
+          ? selectedPokemon.tipo.join(", ")
+          : selectedPokemon.tipo || "Desconocido"}
+      </p>
       <p className="text-lg">Evolución: {selectedPokemon.faseEvolutiva}</p>
       <p className="text-lg">
         Legendario: {selectedPokemon.legendario ? "Sí" : "No"}
