@@ -6,6 +6,7 @@ import ListPokemon from "~/componentes/ListPokemon";
 import Imagen from "~/componentes/image";
 import Header from "~/componentes/header";
 import Footer from "~/componentes/footer";
+import Tipos from "~/componentes/tipo";
 import "./home.css"; // Importamos el CSS
 
 const fetchPokemon = async () => {
@@ -48,12 +49,15 @@ const Home = () => {
 
       <div className="container mx-auto p-4 flex justify-between gap-8 text-white">
         {/* Imagen del Pokémon seleccionado */}
-        {selectedPokemon && (
-          <Imagen
-            imagen={selectedPokemon.spritePlatino}
-            tipos={selectedPokemon.tipo}
-          />
-        )}
+        <div className="flex flex-col gap-4 items-center justify-center flex-grow">
+          {selectedPokemon && (
+            <>
+              <Imagen imagen={selectedPokemon.spritePlatino}/>
+              <Tipos tipos={selectedPokemon.tipo}></Tipos>
+            </>
+          )}
+        </div>
+        
 
         <ListPokemon
           dataPokemon={data}

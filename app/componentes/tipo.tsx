@@ -25,13 +25,13 @@ function Tipos({tipos = ""}:TipoProps) {
 
       const tiposArray = tipos.split(",");
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-8">
         {tiposArray.map((tipo) => (
             <div 
                 key={tipo.trim()}
-                className={`rounded-md px-2 py-1 ${types[tipo.trim()]}`}
+                className={`rounded-md px-4 py-2 text-2xl font-bold ${types[tipo.trim()]}`}
                 >
-                {tipo.trim()}
+                {tipo.trim().toUpperCase()}
             </div>
         ))}
     </div>
