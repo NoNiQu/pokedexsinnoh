@@ -10,7 +10,7 @@ interface CardProps {
 function Card({ pokemon, isSelected }: CardProps) {
   return (
     <div
-      className={`flex items-center shadow-lg rounded-s-3xl rounded-e-md py-5 px-12 w-full ${
+      className={`flex items-center shadow-lg rounded-5xl rounded-md py-5 px-12 w-full ${
         isSelected ? "bg-amber-200" : "bg-amber-100"
       }`}
       style={{ width: "650px", fontSize: "1.5rem" }}

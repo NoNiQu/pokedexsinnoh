@@ -1,5 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-
 interface ImagenProps {
   imagen?: string;
   tipos?: string;
@@ -32,18 +30,23 @@ function Imagen({ imagen, tipos = "" }: ImagenProps) {
 
   return (
     <div className="flex flex-col gap-4 items-center justify-center flex-grow">
-      <img
-        src={imagen}
-        alt="Pokemon"
-        className="w-96 h-96 bg-white border-4 border-red-500"
-      />
-      <div className="flex gap-4">
+      <div className="border-8 border-white rounded-3xl">
+        <img
+          src={imagen}
+          alt="Pokemon"
+          className="w-[500px] h-[500px] bg-white border-8 rounded-2xl border-red-500"
+        />
+      </div>
+
+      <div className="flex gap-8">
         {tiposArray.map((tipo) => (
           <div
             key={tipo.trim()}
-            className={`rounded-md px-2 py-1 ${types[tipo.trim()]}`}
+            className={`rounded-md px-4 py-2 text-2xl font-bold ${
+              types[tipo.trim()]
+            }`}
           >
-            {tipo.trim()}
+            {tipo.trim().toUpperCase()}
           </div>
         ))}
       </div>

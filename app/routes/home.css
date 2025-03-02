@@ -11,21 +11,21 @@
 
 /* Estilos para la barra de desplazamiento en Chrome, Edge y Safari */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px; /* Grosor de la barra */
+  width: 8px; /* Ancho de la barra de desplazamiento */
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #2d2d2d; /* Fondo del track */
+  background: #2d2d2d; /* Color del fondo de la barra de desplazamiento */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #888; /* Color de la barra */
-  border-radius: 10px; /* Esquinas redondeadas */
-  border: 2px solid #2d2d2d; /* Borde para contraste */
+  background-color: #888; /* Color de la barra de desplazamiento */
+  border-radius: 10px; /* Radio de borde para redondear las esquinas */
+  border: 2px solid #2d2d2d; /* Borde alrededor de la barra de desplazamiento */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Efecto hover */
+  background: #555; /* Color de la barra de desplazamiento al pasar el ratón */
 }
 
 /* Estilos para Firefox */

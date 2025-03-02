@@ -46,7 +46,7 @@ const Home = () => {
     <>
       <Header titulo="POKéDEX SINNOH"></Header>
 
-      <div className="container mx-auto p-4 flex gap-8 text-white">
+      <div className="container mx-auto p-4 flex justify-between gap-8 text-white">
         {/* Imagen del Pokémon seleccionado */}
         {selectedPokemon && (
           <Imagen
@@ -54,8 +54,12 @@ const Home = () => {
             tipos={selectedPokemon.tipo}
           />
         )}
-        
-          <ListPokemon dataPokemon={data} selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon}></ListPokemon>
+
+        <ListPokemon
+          dataPokemon={data}
+          selectedPokemon={selectedPokemon}
+          setSelectedPokemon={setSelectedPokemon}
+        />
       </div>
 
       <Footer></Footer>

@@ -1,11 +1,11 @@
-function footer() {
+function Footer() {
   return (
-    <footer className="bg-fuchsia-400 text-black text-center py-5 flex justify-center items-center">
-        <h2 className="text-5xl">DIEGO & MARCOS</h2>
-        <h2 className="mx-5 text-5xl">S2DAW</h2>
-        <h2 className="text-5xl">API NOSTRA</h2>
+    <footer className="bg-fuchsia-400 text-black text-center py-4 flex justify-center items-center fixed bottom-0 w-full">
+      <h2 className="text-4xl font-bold">DIEGO & MARCOS</h2>
+      <h2 className="mx-5 text-4xl font-bold">S2DAW</h2>
+      <h2 className="text-4xl font-bold">API NOSTRA</h2>
     </footer>
-  )
+  );
 }
 
-export default footer
+export default Footer;
