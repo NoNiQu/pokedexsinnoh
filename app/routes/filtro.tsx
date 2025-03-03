@@ -69,10 +69,10 @@ const Filtro = () => {
 
   return (
     <>
-      <Header titulo="FILTRER"></Header>
+      <Header titulo="FILTER"></Header>
       <div className="container mx-auto p-4 flex gap-8">
         {/* Formulario de filtros SIEMPRE visible */}
-        <div className="w-1/4 p-4  rounded-lg">
+        <div className="w-1/4 p-4 rounded-lg">
           <FilterForm
             onFilter={handleFilter}
             onReset={handleReset}
@@ -86,7 +86,7 @@ const Filtro = () => {
             <FilteredList data={filteredPokemons} />
           </div>
         ) : (
-          <p className="text-center text-gray-700 mt-4">
+          <p className="text-center text-gray-700 mt-4 text-3xl font-bold">
             Filtra o muestra todo para ver los Pokémon.
           </p>
         )}

@@ -133,28 +133,33 @@ function FilterForm({ onFilter, onReset, onShowAll }: FilterFormProps) {
         </label>
       </div>
 
-      <div className="flex gap-2 mt-2">
+
+
+      <div className="mt-3">
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={handleReset}
+            className="w-full bg-gray-500 text-white p-2 rounded-md cursor-pointer"
+          >
+            Reset
+          </button>
+          <button
+            type="button"
+            onClick={handleShowAll}
+            className="w-full bg-green-500 text-white p-2 rounded-md cursor-pointer"
+          >
+            Mostrar Todo
+          </button>
+        </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded-md cursor-pointer"
+          className="w-full bg-blue-500 text-white p-2 rounded-md cursor-pointer mt-2"
         >
           Filtrar
         </button>
-        <button
-          type="button"
-          onClick={handleReset}
-          className="w-full bg-gray-500 text-white p-2 rounded-md cursor-pointer"
-        >
-          Reset
-        </button>
-        <button
-          type="button"
-          onClick={handleShowAll}
-          className="w-full bg-green-500 text-white p-2 rounded-md cursor-pointer"
-        >
-          Mostrar Todo
-        </button>
       </div>
+    
     </form>
   );
 }

@@ -1,5 +1,4 @@
 import FilteredListCard from "~/componentes/FilteredListCard";
-import { useEffect, useState } from "react";
 import type { Pokemon } from "~/types/pokemon";
 
 interface FilteredListProps {
