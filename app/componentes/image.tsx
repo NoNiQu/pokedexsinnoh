@@ -10,7 +10,7 @@ function Imagen({ imagen }: ImagenProps) {
       <img
         src={imagen}
         alt="Pokemon"
-        className="w-[500px] h-[500px] bg-white border-8 rounded-2xl border-cyan-400"
+        className="w-[550px] h-[550px] bg-white border-8 rounded-2xl border-cyan-400"
       />
     </div>
   );

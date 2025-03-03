@@ -1,7 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Imagen from "~/componentes/image";
-import type { Pokemon } from "~/types/pokemon";
 import Header from "~/componentes/header";
 import Footer from "~/componentes/footer";
 import Tipos from "~/componentes/tipo";
@@ -60,6 +59,35 @@ const Descripcion = () => {
             <DescripcionPokemon
               descripcion={selectedPokemon.descripcionDiamantePerla}
             ></DescripcionPokemon>
+          </div>
+          <div className="fixed inset-y-1/2 left-0 right-0 flex px-4">
+            {/* Flecha izquierda: Solo mostrar si el ID es mayor que 1 */}
+            {selectedPokemon.id > 1 && (
+              <Link
+                to={`/descripcion/${selectedPokemon.id - 1}`}
+                className="mr-auto"
+              >
+                <img
+                  src="/public/arrow-left-solid.svg"
+                  alt="Left Arrow"
+                  className="w-12 h-12 cursor-pointer opacity-70"
+                />
+              </Link>
+            )}
+
+            {/* Flecha derecha: Solo mostrar si el ID es menor que 107 */}
+            {selectedPokemon.id < 107 && (
+              <Link
+                to={`/descripcion/${selectedPokemon.id + 1}`}
+                className="ml-auto"
+              >
+                <img
+                  src="/public/arrow-right-solid.svg"
+                  alt="Right Arrow"
+                  className="w-12 h-12 cursor-pointer opacity-70"
+                />
+              </Link>
+            )}
           </div>
         </div>
       </div>
