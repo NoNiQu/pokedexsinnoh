@@ -1,100 +1,49 @@
-# Welcome to React Router!
+# PROYECTO FINAL DAWEC CON REACT ROUTER
 
-A modern, production-ready template for building full-stack React applications using React Router.
+- Autores: Diego Fernández Lozano & Marcos Alarcón Alguacil
+- Asignatura: Desarrollo de Aplicaciones Web en Entorno Cliente
+- Curso: S2DAW
+- Fecha de entrega: --/03/2025
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## 1. Descripción de la práctica.
+El objetivo de esta práctica consiste en acceder a los datos de una API mediante AJAX, para mostrarlos meidante una aplicación de página única utilizando React Router, con varias rutas.
 
-## Features
+Nuestra página, similar a la anterior, trata sobre Pokémon; y nuestro objetivo consiste en listar, filtrar y mostrar la información de todos los pokémon de la región de Sinnoh, la cuarta generación de Pokémon. Además de React Router, hemos utilizado TypeScript y TailwindCSS para los estilos de la página.
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+### 1.1. Creación de una API propia.
+Para crear nuestra aplicación, hemos preparado una API propia con todos los datos que necesitamos de todos los pokémon de Sinnoh. De esta forma solucionamos un problema que tuvimos con la API anterior, la [PokéAPI](https://pokeapi.co/), pues aunque es más completa, distribuye los datos de una forma confusa que complica la codificación de la aplicación, además de que contiene información de todos los pokémon existentes, mientras que nosotros solamente vamos a mostrar una pequeña parte de ellos.
 
-## Getting Started
+Por ello hemos decidido apostar por crear una API (por ahora en local) con solamente la información que vamos a mostrar, con una estructura simple que nos permita navegar por ella de una forma cómoda.
 
-### Installation
+## 2. Explicación de la aplicación.
+Nuestra aplicación consiste en una página web (**home**) que contiene la lista de todos los Pokémon de la región de Sinnoh, en formato simplificado (listando su ID y su nombre) y acompañado por su sprite (imagen compuesta de píxeles) y sus tipos. Adicionalmente se muestra el icono en pequeño del pokémon y un tipo de pokéball según su fase evolutiva.  
+Para cada pokémon existe además un botón que nos permite acceder a la siguiente página.
 
-Install the dependencies:
+La segunda página (**descripción**) contiene los datos en específico del pokémon seleccionado, esto es su ID, nombre, tipos, categoría, peso y altura, y su descripción. Se mantiene también la imagen que ya se mostraba en la página anterior.
 
-```bash
-npm install
-```
+Y finalmente tenemos una tercera página (**filtro**) donde se puede filtrar y buscar pokémon de la lista. Se nos permite buscar introduciendo un nombre, seleccionando por tipo, y ordenando según su altura o peso (en orden ascendente o descendente). Una vez elegimos los criterios por los que filtrar, se muestra la lista de pokémon que cumplen dichos criterios, ordenados por ID si no se especifica lo contrario, y pudiendo hacer clic sobre cualquiera de ellos para ver sus datos en detalle.
 
-### Development
+- Como punto adicional, existe un botón en el Header que nos permite cambiar la apariencia de la aplicación para ajustarla al juego que elijamos, ya sea Pokémon Diamante, Perla o Platino (los juegos que componen la cuarta generación de Pokémon, sobre la que trata esta apliación). Pero el cambio no es solamente estético, pues se modifica la imagen y la descripción de los pokémon para mostrar la que proviene de cada juego.
 
-Start the development server with HMR:
+## 3. Tecnologías utilizadas.
+Para la creación de nuestra aplicación, hemos utilizado React Router para especificar diferentes rutas, así como organizar el código en distintos componentes reutilizables, como por ejemplo el **Header** o los **botones**. De esta forma es mucho más fácil de comprender el código, así como de modificar.
 
-```bash
-npm run dev
-```
+Para los estilos hemos decidido utilizar TailwindCSS debido a la flexibilidad que nos proporciona a la hora de estilar la aplicación y lo útil que resultan sus clases predefinidas.
 
-Your application will be available at `http://localhost:5173`.
+Y adicionalmente hemos utilizado TypeScript en lugar de JavaScript, pues faicilita en gran medida la codificación y elimina muchos errores en tiempo de ejecución gracias al tipado de variables, entre otras características que proporciona.
 
-## Building for Production
+Todo este proyecto los hemos creado con Vite, un gestor que nos permite instalar dependencias así como poder ejecutar el proyecto de una forma sencilla.
 
-Create a production build:
+## 4. Instrucciones de instalación.
+Ya que hemos utilizado Vite para la creación del proyecto, es necesario instalar Node para ejecutar correctamente el proyecto.
 
-```bash
-npm run build
-```
+## 5. Documentación de la API.
+Como ya se ha explicado anteriormente, hemos creado una API propia para poder acomodar los datos de una forma sencilla y eficaz. Por ello vamos a explicar cómo funciona.
 
-## Deployment
+- Si accedemos a la ruta **"api/"** se nos proporciona una tabla con las instrucciones de uso de la API, siendo una forma rápida y cómoda de consultar su manual.
+- Si accedemas a la ruta **"api/pokedex_sinnoh"** se listarán todos los pokémon que integra la API, con todos sus datos formateados de una forma sencilla. Cada pokémon se muestra en formato JSON con sus campos: su ID, su nombre, sus tipos, etc.
+- Si accedemas a la ruta **"api/pokedex_sinnoh/{id}"** se mostrarán los datos del pokémon cuyo ID se haya especificado en la ruta. Esto es, se muestra el JSON de ese pokémon con todos sus campos, de igual forma que al visualizar la lista completa, pero permitiendonos buscar por un ID en específico.
 
-### Docker Deployment
+## 6. Enlaces de interés.
 
-This template includes three Dockerfiles optimized for different package managers:
-
-- `Dockerfile` - for npm
-- `Dockerfile.pnpm` - for pnpm
-- `Dockerfile.bun` - for bun
-
-To build and run using Docker:
-
-```bash
-# For npm
-docker build -t my-app .
-
-# For pnpm
-docker build -f Dockerfile.pnpm -t my-app .
-
-# For bun
-docker build -f Dockerfile.bun -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+- [Enlace a la página desplegada con Vercel]()
