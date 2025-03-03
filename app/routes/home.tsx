@@ -51,7 +51,7 @@ const Home = () => {
         <div className="flex flex-col gap-4 items-center justify-center flex-grow">
           {selectedPokemon && (
             <>
-              <Imagen imagen={selectedPokemon.spritePlatino} />
+              <Imagen imagen={selectedPokemon.spriteDiamantePerla} />
               <Tipos tipos={selectedPokemon.tipo}></Tipos>
             </>
           )}

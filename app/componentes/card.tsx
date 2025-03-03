@@ -32,7 +32,7 @@ function Card({ pokemon, isSelected }: CardProps) {
             to={`/descripcion/${pokemon.id}`}
             className="bg-amber-600 text-white px-4 py-2 rounded-md ml-auto"
           >
-            More information
+            INFO
           </Link>
         )}
       </div>

@@ -3,15 +3,14 @@ interface ImagenProps {
 }
 
 function Imagen({ imagen }: ImagenProps) {
-
   if (!imagen) return null; // Evita errores si la imagen es undefined
 
   return (
-    <div className="border-8 border-white rounded-3xl w-fit">
+    <div className="border-8 border-yellow-300 rounded-3xl w-fit">
       <img
         src={imagen}
         alt="Pokemon"
-        className="w-[500px] h-[500px] bg-white border-8 rounded-2xl border-red-500"
+        className="w-[500px] h-[500px] bg-white border-8 rounded-2xl border-cyan-400"
       />
     </div>
   );

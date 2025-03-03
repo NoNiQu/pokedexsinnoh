@@ -13,7 +13,7 @@ function ListPokemon({
   setSelectedPokemon,
 }: ListPokemonProps) {
   return (
-    <div className="pokemon-list custom-scrollbar flex flex-col gap-4 max-h-[750px] w-[700px] overflow-y-auto bg-amber-400 p-4 rounded-md cursor-pointer">
+    <div className="pokemon-list custom-scrollbar flex flex-col gap-4 max-h-[750px] w-[700px] overflow-y-auto bg-sky-800 platinum:bg-amber-800 pearl:bg-pink-700 p-4 rounded-md cursor-pointer">
       {dataPokemon.map((pokemon: Pokemon) => (
         <div key={pokemon.id} onClick={() => setSelectedPokemon(pokemon)}>
           <Card

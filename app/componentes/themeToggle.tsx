@@ -1,19 +1,22 @@
 import { useDarkMode } from "../hooks/useDarkMode";
+
 function ThemeToggle() {
-    const { theme, toggleTheme } = useDarkMode();
-    
-    return (
-        // Falta darle estilo al botón, pero básicamente cambia el tema.
-        <button onClick={toggleTheme} className="bg-sky-400 pearl:bg-pink-300 pearl:text-black platinum:bg-amber-500 rounded-3xl text-white px-4 py-2 font-bold">
-            {theme === "diamond" ? (
-                <p>DIAMANTE</p>
-            ) : theme === "platinum" ? (
-                <p>PLATINO</p>
-            ) : (
-                <p>PERLA</p>
-            )}
-        </button>
-    )
+  const { theme, toggleTheme } = useDarkMode();
+
+  return (
+    <button
+      onClick={toggleTheme}
+      className="bg-sky-500 hover:bg-sky-600 pearl:bg-pink-300 pearl:text-black pearl:hover:bg-pink-400 platinum:bg-amber-500 platinum:hover:bg-amber-600 rounded-2xl text-white px-6 py-2 text-3xl cursor-pointer"
+    >
+      {theme === "diamond" ? (
+        <p>DIAMOND</p>
+      ) : theme === "platinum" ? (
+        <p>PLATINUM</p>
+      ) : (
+        <p>PEARL</p>
+      )}
+    </button>
+  );
 }
 
-export default ThemeToggle
+export default ThemeToggle;

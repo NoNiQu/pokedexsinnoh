@@ -8,38 +8,25 @@ interface FilterFormProps {
     sortOrder: string;
   }) => void;
   onReset: () => void;
-  onShowAll: () => void;
 }
 
-// Componente para el formulario de filtros
-function FilterForm({ onFilter, onReset, onShowAll }: FilterFormProps) {
+function FilterForm({ onFilter, onReset }: FilterFormProps) {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [sortOrder, setSortOrder] = useState("");
 
-  // Función que ocurre en lugar de enviarse el formulario.
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onFilter({ name, type, sortBy, sortOrder });
   };
 
-  // Función para resetear el formulario (resetear los estados).
   const handleReset = () => {
     setName("");
     setType("");
     setSortBy("");
     setSortOrder("");
     onReset();
-  };
-
-  // Función para mostrar todos los Pokémon (resetear estados y mostrar todo).
-  const handleShowAll = () => {
-    setName("");
-    setType("");
-    setSortBy("");
-    setSortOrder("");
-    onShowAll();
   };
 
   return (
@@ -85,7 +72,6 @@ function FilterForm({ onFilter, onReset, onShowAll }: FilterFormProps) {
             onChange={() => {
               setSortBy("altura");
               if (sortOrder == "") {
-                // Si no hay ningún orden seleccionado, se selecciona automáticamente ASC.
                 setSortOrder("asc");
               }
             }}
@@ -101,7 +87,6 @@ function FilterForm({ onFilter, onReset, onShowAll }: FilterFormProps) {
             onChange={() => {
               setSortBy("peso");
               if (sortOrder == "") {
-                // Si no hay ningún orden seleccionado, se selecciona automáticamente ASC.
                 setSortOrder("asc");
               }
             }}
@@ -133,8 +118,6 @@ function FilterForm({ onFilter, onReset, onShowAll }: FilterFormProps) {
         </label>
       </div>
 
-
-
       <div className="mt-3">
         <div className="flex gap-2">
           <button
@@ -144,13 +127,6 @@ function FilterForm({ onFilter, onReset, onShowAll }: FilterFormProps) {
           >
             Reset
           </button>
-          <button
-            type="button"
-            onClick={handleShowAll}
-            className="w-full bg-green-500 text-white p-2 rounded-md cursor-pointer"
-          >
-            Mostrar Todo
-          </button>
         </div>
         <button
           type="submit"
@@ -159,7 +135,6 @@ function FilterForm({ onFilter, onReset, onShowAll }: FilterFormProps) {
           Filtrar
         </button>
       </div>
-    
     </form>
   );
 }

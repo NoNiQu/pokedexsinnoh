@@ -17,7 +17,7 @@ img{
 
 html,
 body {
-  @apply bg-sky-300;
+  @apply bg-cyan-200;
   
   font-family: Pokemon;
 
@@ -32,5 +32,5 @@ body {
 
 html,
 body {
-  @apply pearl:bg-pink-300 platinum:bg-amber-500 transition duration-300;
+  @apply pearl:bg-pink-200 platinum:bg-amber-400 transition duration-300;
 }

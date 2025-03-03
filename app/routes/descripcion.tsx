@@ -44,9 +44,9 @@ const Descripcion = () => {
   return (
     <>
       <Header titulo="INFO"></Header>
-      <div className="container mx-auto p-4 text-white pb-20">
+      <div className="container mx-auto p-4 text-white pb-20 mt-20">
         <div className="flex justify-center gap-6 mb-6">
-          <Imagen imagen={selectedPokemon.spritePlatino} />
+          <Imagen imagen={selectedPokemon.spriteDiamantePerla} />
           <div className="flex flex-col justify-between gap-4 w-4/7">
             <div>
               <CabeceraPokemon pokemon={selectedPokemon}></CabeceraPokemon>
