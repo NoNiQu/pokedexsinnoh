@@ -2,24 +2,28 @@ import Card from "~/componentes/card";
 import type { Pokemon } from "~/types/pokemon";
 
 interface ListPokemonProps {
-    dataPokemon: Pokemon[];
-    selectedPokemon: Pokemon | null;
-    setSelectedPokemon: (pokemon: Pokemon) => void;
+  dataPokemon: Pokemon[];
+  selectedPokemon: Pokemon | null;
+  setSelectedPokemon: (pokemon: Pokemon) => void;
 }
 
-function ListPokemon({dataPokemon, selectedPokemon, setSelectedPokemon}:ListPokemonProps) {
+function ListPokemon({
+  dataPokemon,
+  selectedPokemon,
+  setSelectedPokemon,
+}: ListPokemonProps) {
   return (
-    <div className="pokemon-list custom-scrollbar flex flex-col gap-4">
-        {dataPokemon.map((pokemon: Pokemon) => (
-            <div key={pokemon.id} onClick={() => setSelectedPokemon(pokemon)}>
-                <Card
-                    pokemon={pokemon}
-                    isSelected={pokemon.id === selectedPokemon?.id}
-                />
-            </div>
-        ))}
+    <div className="pokemon-list custom-scrollbar flex flex-col gap-4 max-h-[750px] w-[700px] overflow-y-auto bg-amber-400 p-4 rounded-md cursor-pointer">
+      {dataPokemon.map((pokemon: Pokemon) => (
+        <div key={pokemon.id} onClick={() => setSelectedPokemon(pokemon)}>
+          <Card
+            pokemon={pokemon}
+            isSelected={pokemon.id === selectedPokemon?.id}
+          />
+        </div>
+      ))}
     </div>
-  )
+  );
 }
 
-export default ListPokemon
+export default ListPokemon;

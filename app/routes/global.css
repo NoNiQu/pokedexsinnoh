@@ -1,14 +1,3 @@
-/* Contenedor de la lista de Pokémon */
-.pokemon-list {
-  max-height: 750px;
-  width: 700px;
-  overflow-y: auto;
-  background: #fbbf24; /* Color ámbar */
-  padding: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
 /* Estilos para la barra de desplazamiento en Chrome, Edge y Safari */
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px; /* Ancho de la barra de desplazamiento */

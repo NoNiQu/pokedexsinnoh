@@ -7,7 +7,7 @@ import Imagen from "~/componentes/image";
 import Header from "~/componentes/header";
 import Footer from "~/componentes/footer";
 import Tipos from "~/componentes/tipo";
-import "./home.css";
+import "./global.css";
 
 const fetchPokemon = async () => {
   const res = await fetch("http://localhost:8080/api/pokedex_sinnoh");

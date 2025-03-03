@@ -44,18 +44,18 @@ const Descripcion = () => {
   return (
     <>
       <Header titulo="INFO"></Header>
-      {/* <h1 className="text-5xl font-bold mb-4">
-          {selectedPokemon.nombre.toUpperCase()}
-      </h1> */}
-
       <div className="container mx-auto p-4 text-white pb-20">
         <div className="flex justify-center gap-6 mb-6">
           <Imagen imagen={selectedPokemon.spritePlatino} />
           <div className="flex flex-col justify-between gap-4 w-4/7">
-            <CabeceraPokemon pokemon={selectedPokemon}></CabeceraPokemon>
-            <div className="ms-2">
-              <Tipos tipos={selectedPokemon.tipo}></Tipos>
-              <StatsPokemon pokemon={selectedPokemon}></StatsPokemon>
+            <div>
+              <CabeceraPokemon pokemon={selectedPokemon}></CabeceraPokemon>
+              <div className="ms-2 mt-4">
+                <Tipos tipos={selectedPokemon.tipo}></Tipos>
+                <div className="mt-4">
+                  <StatsPokemon pokemon={selectedPokemon}></StatsPokemon>
+                </div>
+              </div>
             </div>
             <DescripcionPokemon
               descripcion={selectedPokemon.descripcionDiamantePerla}
