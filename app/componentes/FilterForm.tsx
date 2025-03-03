@@ -24,7 +24,7 @@ function FilterForm({ onFilter, onReset, onShowAll }: FilterFormProps) {
         onFilter({ name, type, sortBy, sortOrder });
     };
 
-    // Función para resetear el formulario.
+    // Función para resetear el formulario (resetear los estados).
     const handleReset = () => {
         setName("");
         setType("");
@@ -33,7 +33,7 @@ function FilterForm({ onFilter, onReset, onShowAll }: FilterFormProps) {
         onReset();
     };
 
-    // Función para mostrar todos los Pokémon.
+    // Función para mostrar todos los Pokémon (resetear estados y mostrar todo).
     const handleShowAll = () => {
         setName("");
         setType("");
@@ -56,7 +56,7 @@ function FilterForm({ onFilter, onReset, onShowAll }: FilterFormProps) {
                 onChange={(e) => setType(e.target.value)}
                 className="w-full p-2 border rounded-md mt-2"
             >
-                <option value="">Any</option>
+                <option value="">Select Type / All</option>
                 <option value="normal">Normal</option>
                 <option value="fire">Fire</option>
                 <option value="water">Water</option>
@@ -82,7 +82,12 @@ function FilterForm({ onFilter, onReset, onShowAll }: FilterFormProps) {
                         name="sortBy"
                         value="altura"
                         checked={sortBy === "altura"}
-                        onChange={() => setSortBy("altura")}
+                        onChange={() => 
+                            {setSortBy("altura"); 
+                            if (sortOrder == ""){  // Si no hay ningún orden seleccionado, se selecciona automáticamente ASC.
+                                setSortOrder("asc");
+                            }
+                        }}
                     />
                     Altura
                 </label>
@@ -92,7 +97,12 @@ function FilterForm({ onFilter, onReset, onShowAll }: FilterFormProps) {
                         name="sortBy"
                         value="peso"
                         checked={sortBy === "peso"}
-                        onChange={() => setSortBy("peso")}
+                        onChange={() => 
+                            {setSortBy("peso");
+                            if (sortOrder == ""){  // Si no hay ningún orden seleccionado, se selecciona automáticamente ASC.
+                                setSortOrder("asc");
+                            }
+                        }}
                     />
                     Peso
                 </label>

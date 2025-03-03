@@ -11,7 +11,7 @@ function FilteredList({data}:FilteredListProps) {
     return (
         <div className="grid grid-cols-3 gap-4 mt-4">
             {data.map((pokemon) => (
-                <FilteredListCard pokemon={pokemon}></FilteredListCard>
+                <FilteredListCard key={pokemon.id} pokemon={pokemon}></FilteredListCard>
             ))}
         </div>
     );
