@@ -44,9 +44,14 @@ const Descripcion = () => {
     <>
       <Header titulo="INFO"></Header>
       <div className="container mx-auto p-4 text-white pb-20 mt-20">
-        <div className="flex justify-center gap-6 mb-6">
-          <Imagen imagen={selectedPokemon.spriteDiamantePerla} />
-          <div className="flex flex-col justify-between gap-4 w-4/7">
+        <div className="flex flex-col md:flex-row justify-center gap-6 mb-6">
+          {/* Imagen del Pokémon (solo columna en móviles) */}
+          <div className="flex justify-center w-full md:w-auto">
+            <Imagen imagen={selectedPokemon.spriteDiamantePerla} />
+          </div>
+
+          {/* Descripción y demás información del Pokémon */}
+          <div className="flex flex-col justify-between gap-4 w-full md:w-4/7">
             <div>
               <CabeceraPokemon pokemon={selectedPokemon}></CabeceraPokemon>
               <div className="ms-2 mt-4">
@@ -60,35 +65,37 @@ const Descripcion = () => {
               descripcion={selectedPokemon.descripcionDiamantePerla}
             ></DescripcionPokemon>
           </div>
-          <div className="fixed inset-y-1/2 left-0 right-0 flex px-4">
-            {/* Flecha izquierda: Solo mostrar si el ID es mayor que 1 */}
-            {selectedPokemon.id > 1 && (
-              <Link
-                to={`/descripcion/${selectedPokemon.id - 1}`}
-                className="mr-auto"
-              >
-                <img
-                  src="/public/arrow-left-solid.svg"
-                  alt="Left Arrow"
-                  className="w-12 h-12 cursor-pointer opacity-70"
-                />
-              </Link>
-            )}
+        </div>
 
-            {/* Flecha derecha: Solo mostrar si el ID es menor que 107 */}
-            {selectedPokemon.id < 107 && (
-              <Link
-                to={`/descripcion/${selectedPokemon.id + 1}`}
-                className="ml-auto"
-              >
-                <img
-                  src="/public/arrow-right-solid.svg"
-                  alt="Right Arrow"
-                  className="w-12 h-12 cursor-pointer opacity-70"
-                />
-              </Link>
-            )}
-          </div>
+        {/* Contenedor de las flechas */}
+        <div className="fixed bottom-0 left-0 right-0 flex justify-between px-4 py-4 md:static md:mt-6">
+          {/* Flecha izquierda: Solo mostrar si el ID es mayor que 1 */}
+          {selectedPokemon.id > 1 && (
+            <Link
+              to={`/descripcion/${selectedPokemon.id - 1}`}
+              className="flex justify-start w-full md:w-auto"
+            >
+              <img
+                src="/public/arrow-left-solid.svg"
+                alt="Left Arrow"
+                className="w-12 h-12 cursor-pointer opacity-70"
+              />
+            </Link>
+          )}
+
+          {/* Flecha derecha: Solo mostrar si el ID es menor que 107 */}
+          {selectedPokemon.id < 107 && (
+            <Link
+              to={`/descripcion/${selectedPokemon.id + 1}`}
+              className="flex justify-end w-full md:w-auto"
+            >
+              <img
+                src="/public/arrow-right-solid.svg"
+                alt="Right Arrow"
+                className="w-12 h-12 cursor-pointer opacity-70"
+              />
+            </Link>
+          )}
         </div>
       </div>
       <Footer></Footer>

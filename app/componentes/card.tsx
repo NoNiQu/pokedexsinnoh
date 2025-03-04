@@ -15,16 +15,22 @@ function Card({ pokemon, isSelected }: CardProps) {
       }`}
       style={{ fontSize: "1.5rem" }}
     >
-      <div className="flex items-center w-full">
-        <PokeballImage
-          legendario={pokemon.legendario}
-          faseEvolutiva={pokemon.faseEvolutiva}
-          spriteMiniatura={pokemon.spriteMiniatura}
-        />
-        <p className="px-5 text-5xl font-bold text-black">
+      <div className="flex items-center w-full space-x-4">
+        {" "}
+        {/* Added horizontal spacing */}
+        {/* PokeballImage hidden on mobile */}
+        <div className="hidden md:block">
+          <PokeballImage
+            legendario={pokemon.legendario}
+            faseEvolutiva={pokemon.faseEvolutiva}
+            spriteMiniatura={pokemon.spriteMiniatura}
+          />
+        </div>
+        {/* Increased text size on mobile and added spacing between elements */}
+        <p className="text-3xl md:text-2xl font-bold text-black">
           {String(pokemon.id).padStart(3, "0")}
         </p>
-        <p className="text-5xl font-bold text-black mr-5">
+        <p className="text-3xl md:text-5xl font-bold text-black mr-5">
           {pokemon.nombre.toUpperCase()}
         </p>
         {isSelected && (
