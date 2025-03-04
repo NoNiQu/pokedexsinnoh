@@ -7,6 +7,7 @@ import Tipos from "~/componentes/tipo";
 import CabeceraPokemon from "~/componentes/cabeceraPokemon";
 import StatsPokemon from "~/componentes/statsPokemon";
 import DescripcionPokemon from "~/componentes/descripcionPokemon";
+import Arrow from "~/componentes/Arrow";
 
 const fetchPokemonById = async (id: string) => {
   const res = await fetch(`http://localhost:8080/api/pokedex_sinnoh/${id}`);
@@ -71,32 +72,10 @@ const Descripcion = () => {
         <div className="fixed bottom-0 left-0 right-0 flex justify-between px-4 py-4 md:static md:mt-6">
           <div className="w-full flex justify-between">
             {/* Flecha izquierda: Solo mostrar si el ID es mayor que 1 */}
-            <Link
-              to={`/descripcion/${selectedPokemon.id - 1}`}
-              className={`flex justify-start w-auto ${
-                selectedPokemon.id === 1 ? "hidden" : ""
-              }`}
-            >
-              <img
-                src="/public/arrow-left-solid.svg"
-                alt="Left Arrow"
-                className="w-12 h-12 cursor-pointer opacity-70"
-              />
-            </Link>
+            <Arrow pokemon={selectedPokemon} isNextPokemon={false}></Arrow>
 
             {/* Flecha derecha: Solo mostrar si el ID es menor que 107 */}
-            <Link
-              to={`/descripcion/${selectedPokemon.id + 1}`}
-              className={`flex justify-end w-auto ${
-                selectedPokemon.id === 107 ? "hidden" : ""
-              }`}
-            >
-              <img
-                src="/public/arrow-right-solid.svg"
-                alt="Right Arrow"
-                className="w-12 h-12 cursor-pointer opacity-70"
-              />
-            </Link>
+            <Arrow pokemon={selectedPokemon} isNextPokemon={true}></Arrow>
           </div>
         </div>
       </div>
