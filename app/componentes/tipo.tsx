@@ -25,7 +25,7 @@ function Tipos({ tipos = "" }: TipoProps) {
 
   const tiposArray = tipos.split(",");
   return (
-    <div className="flex gap-8 w-full justify-center md:justify-start text-center md:text-left">
+    <div className="flex gap-8 w-full justify-center text-center md:text-left">
       {tiposArray.map((tipo) => (
         <div
           key={tipo.trim()}

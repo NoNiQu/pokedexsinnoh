@@ -69,11 +69,13 @@ const Descripcion = () => {
 
         {/* Contenedor de las flechas */}
         <div className="fixed bottom-0 left-0 right-0 flex justify-between px-4 py-4 md:static md:mt-6">
-          {/* Flecha izquierda: Solo mostrar si el ID es mayor que 1 */}
-          {selectedPokemon.id > 1 && (
+          <div className="w-full flex justify-between">
+            {/* Flecha izquierda: Solo mostrar si el ID es mayor que 1 */}
             <Link
               to={`/descripcion/${selectedPokemon.id - 1}`}
-              className="flex justify-start w-full md:w-auto"
+              className={`flex justify-start w-auto ${
+                selectedPokemon.id === 1 ? "hidden" : ""
+              }`}
             >
               <img
                 src="/public/arrow-left-solid.svg"
@@ -81,13 +83,13 @@ const Descripcion = () => {
                 className="w-12 h-12 cursor-pointer opacity-70"
               />
             </Link>
-          )}
 
-          {/* Flecha derecha: Solo mostrar si el ID es menor que 107 */}
-          {selectedPokemon.id < 107 && (
+            {/* Flecha derecha: Solo mostrar si el ID es menor que 107 */}
             <Link
               to={`/descripcion/${selectedPokemon.id + 1}`}
-              className="flex justify-end w-full md:w-auto"
+              className={`flex justify-end w-auto ${
+                selectedPokemon.id === 107 ? "hidden" : ""
+              }`}
             >
               <img
                 src="/public/arrow-right-solid.svg"
@@ -95,7 +97,7 @@ const Descripcion = () => {
                 className="w-12 h-12 cursor-pointer opacity-70"
               />
             </Link>
-          )}
+          </div>
         </div>
       </div>
       <Footer></Footer>

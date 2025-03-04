@@ -27,7 +27,7 @@ function Card({ pokemon, isSelected }: CardProps) {
           />
         </div>
         {/* Increased text size on mobile and added spacing between elements */}
-        <p className="text-3xl md:text-2xl font-bold text-black">
+        <p className="text-3xl md:text-5xl font-bold text-black">
           {String(pokemon.id).padStart(3, "0")}
         </p>
         <p className="text-3xl md:text-5xl font-bold text-black mr-5">

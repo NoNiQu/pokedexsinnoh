@@ -60,12 +60,14 @@ const Filtro = () => {
   return (
     <>
       <Header titulo="FILTER"></Header>
-      <div className="container mx-auto p-4 flex gap-8">
-        <div className="w-1/4 p-4 rounded-lg">
+      <div className="container mx-auto p-4 flex flex-col md:flex-row gap-8">
+        {/* Formulario de filtro (columna en móviles, fila en pantallas grandes) */}
+        <div className="w-full md:w-1/4 p-4 rounded-lg">
           <FilterForm onFilter={handleFilter} onReset={handleReset} />
         </div>
 
-        <div className="w-3/4 max-h-[700px] overflow-y-auto bg-sky-800 platinum:bg-amber-800 pearl:bg-pink-700 p-4 rounded-md custom-scrollbar">
+        {/* Lista de Pokémon (columna en móviles, fila en pantallas grandes) */}
+        <div className="w-full md:w-3/4 max-h-[700px] overflow-y-auto bg-sky-800 platinum:bg-amber-800 pearl:bg-pink-700 p-4 rounded-md custom-scrollbar">
           <FilteredList data={filteredPokemons} />
         </div>
       </div>

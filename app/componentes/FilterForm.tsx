@@ -33,7 +33,7 @@ function FilterForm({ onFilter, onReset }: FilterFormProps) {
     <form onSubmit={handleSubmit} className="p-4 bg-white shadow rounded-md">
       <input
         type="text"
-        placeholder="Nombre"
+        placeholder="NAME"
         value={name}
         onChange={(e) => setName(e.target.value)}
         className="w-full p-2 border rounded-md"
@@ -43,7 +43,7 @@ function FilterForm({ onFilter, onReset }: FilterFormProps) {
         onChange={(e) => setType(e.target.value)}
         className="w-full p-2 border rounded-md mt-2"
       >
-        <option value="">Select Type / All</option>
+        <option value="">ANY</option>
         <option value="normal">Normal</option>
         <option value="fire">Fire</option>
         <option value="water">Water</option>
@@ -62,7 +62,7 @@ function FilterForm({ onFilter, onReset }: FilterFormProps) {
         <option value="dragon">Dragon</option>
       </select>
 
-      <div className="mt-2 flex gap-2">
+      <div className="mt-2 flex gap-2 items-center">
         <label>
           <input
             type="radio"
@@ -76,7 +76,7 @@ function FilterForm({ onFilter, onReset }: FilterFormProps) {
               }
             }}
           />
-          Altura
+          HEIGHT
         </label>
         <label>
           <input
@@ -91,11 +91,11 @@ function FilterForm({ onFilter, onReset }: FilterFormProps) {
               }
             }}
           />
-          Peso
+          WEIGHT
         </label>
       </div>
 
-      <div className="mt-2 flex gap-2">
+      <div className="mt-2 flex gap-2 items-center">
         <label>
           <input
             type="radio"
@@ -104,7 +104,7 @@ function FilterForm({ onFilter, onReset }: FilterFormProps) {
             checked={sortOrder === "asc"}
             onChange={() => setSortOrder("asc")}
           />
-          Ascendente
+          ASC
         </label>
         <label>
           <input
@@ -114,7 +114,7 @@ function FilterForm({ onFilter, onReset }: FilterFormProps) {
             checked={sortOrder === "desc"}
             onChange={() => setSortOrder("desc")}
           />
-          Descendente
+          DESC
         </label>
       </div>
 
@@ -123,16 +123,16 @@ function FilterForm({ onFilter, onReset }: FilterFormProps) {
           <button
             type="button"
             onClick={handleReset}
-            className="w-full bg-gray-500 text-white p-2 rounded-md cursor-pointer"
+            className="w-full bg-gray-500 hover:bg-gray-600 text-white p-2 rounded-md cursor-pointer"
           >
-            Reset
+            RESET
           </button>
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded-md cursor-pointer mt-2"
+          className="w-full bg-green-400 hover:bg-green-500 text-white p-2 rounded-md cursor-pointer mt-2"
         >
-          Filtrar
+          SEARCH
         </button>
       </div>
     </form>
