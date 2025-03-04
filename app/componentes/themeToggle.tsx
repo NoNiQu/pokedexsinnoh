@@ -1,5 +1,3 @@
-import { useDarkMode } from "../hooks/useDarkMode";
-
 interface ThemeToggleProps {
   theme: string,
   toggleTheme: () => void

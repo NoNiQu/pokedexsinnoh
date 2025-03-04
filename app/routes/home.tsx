@@ -26,51 +26,26 @@ const Home = () => {
 
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
 
-
-
-
-
-
-
-
-
-
-  const tema = useDarkMode();
-  const [theme, setTheme] = useState(tema.theme);
-
-  useEffect(() => {   // Si cambia el Theme, hay que cambiar el Sprite y la Descripción del Pokémon.
-    if (theme == "platinum") {
-      console.log ("Platino")
-    } else {
-      console.log ("Diamante Perla")
-    }
-  }, [theme]);
-
-
-  const toggleTheme = () => {
-    setTheme((prev) =>
-      prev === "diamond" ? "pearl" : prev === "pearl" ? "platinum" : "diamond"
-    );
-    tema.toggleTheme();
-  };
-
-
-
-
-
-
-
-
-
-
-
-
-
   useEffect(() => {
     if (data.length > 0 && !selectedPokemon) {
       setSelectedPokemon(data[0]);
     }
   }, [data]);
+
+  
+  // Recupero el tema que se esté usando en useDarkMode y lo subo a un estado.
+  // Básicamente separo el tema que se va a aplicar a los estilos, del tema que se va a aplicar a la imagen y descripción. Son el mismo, pero los trato por separado.
+  const tema = useDarkMode();
+  const [theme, setTheme] = useState(tema.theme);
+
+  const cambiarTema = () => {
+    setTheme((prev) =>
+      prev === "diamond" ? "pearl" : prev === "pearl" ? "platinum" : "diamond"
+    );
+    // Aunque cambie el tema en esta página, tengo que decirle que cambie en el estilo.
+    tema.toggleTheme()
+  };
+  
 
   if (isLoading)
     return <div className="text-center mt-10 text-white">Cargando...</div>;
@@ -83,7 +58,7 @@ const Home = () => {
 
   return (
     <>
-      <Header titulo="POKéDEX SINNOH" search={true} theme={theme} setTheme={toggleTheme}/>
+      <Header titulo="POKéDEX SINNOH" search={true} theme={theme} setTheme={cambiarTema}/>
 
       <div className="container mx-auto p-4 flex flex-col md:flex-row justify-between gap-8 text-white pb-20">
         {/* Oculta en móviles y muestra en pantallas medianas o más grandes */}

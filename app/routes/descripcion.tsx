@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Imagen from "~/componentes/image";
 import Header from "~/componentes/header";
 import Footer from "~/componentes/footer";
@@ -20,31 +20,6 @@ const fetchPokemonById = async (id: string) => {
 const Descripcion = () => {
   const { id } = useParams(); // Obtiene el ID de la URL
 
-
-
-
-  const tema = useDarkMode();
-  const [theme, setTheme] = useState(tema.theme);
-  
-  useEffect(() => {   // Si cambia el Theme, hay que cambiar el Sprite y la Descripción del Pokémon.
-    if (theme == "platinum") {
-      console.log ("Platino")
-    } else {
-      console.log ("Diamante Perla")
-    }
-  }, [theme]);
-  
-  
-  const toggleTheme = () => {
-    setTheme((prev) =>
-      prev === "diamond" ? "pearl" : prev === "pearl" ? "platinum" : "diamond"
-    );
-    tema.toggleTheme();
-  };
-
-
-
-
   const {
     data: selectedPokemon,
     isLoading,
@@ -55,6 +30,21 @@ const Descripcion = () => {
     enabled: !!id, // Solo hace la consulta si hay un ID válido
   });
 
+
+  // Recupero el tema que se esté usando en useDarkMode y lo subo a un estado.
+  // Básicamente separo el tema que se va a aplicar a los estilos, del tema que se va a aplicar a la imagen y descripción.
+  const tema = useDarkMode();
+  const [theme, setTheme] = useState(tema.theme);
+
+  const cambiarTema = () => {
+    setTheme((prev) =>
+      prev === "diamond" ? "pearl" : prev === "pearl" ? "platinum" : "diamond"
+    );
+    // Aunque cambie el tema en esta página, tengo que decirle que cambie en el estilo.
+    tema.toggleTheme()
+  };
+
+  
   if (isLoading)
     return <div className="text-center mt-10 text-white">Cargando...</div>;
   if (error)
@@ -70,7 +60,7 @@ const Descripcion = () => {
 
   return (
     <>
-      <Header titulo="INFO" theme={theme} setTheme={toggleTheme}></Header>
+      <Header titulo="INFO" theme={theme} setTheme={cambiarTema}></Header>
       <div className="container mx-auto p-4 text-white pb-20 mt-20">
         <div className="flex flex-col md:flex-row justify-center gap-6 mb-6">
           {/* Imagen del Pokémon (solo columna en móviles) */}

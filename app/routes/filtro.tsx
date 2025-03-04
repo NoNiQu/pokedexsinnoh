@@ -22,29 +22,18 @@ const Filtro = () => {
   }, []);
 
 
-
+  // Recupero el tema que se esté usando en useDarkMode y lo subo a un estado.
+  // Básicamente separo el tema que se va a aplicar a los estilos, del tema que se va a aplicar a la imagen y descripción.
   const tema = useDarkMode();
   const [theme, setTheme] = useState(tema.theme);
 
-  useEffect(() => {   // Si cambia el Theme, hay que cambiar el Sprite y la Descripción del Pokémon.
-    if (theme == "platinum") {
-      console.log ("Platino")
-    } else {
-      console.log ("Diamante Perla")
-    }
-  }, [theme]);
-
-  const toggleTheme = () => {
+  const cambiarTema = () => {
     setTheme((prev) =>
       prev === "diamond" ? "pearl" : prev === "pearl" ? "platinum" : "diamond"
     );
-    tema.toggleTheme();
+    // Aunque cambie el tema en esta página, tengo que decirle que cambie en el estilo.
+    tema.toggleTheme()
   };
-
-
-
-
-
 
 
   const handleFilter = ({
@@ -86,7 +75,7 @@ const Filtro = () => {
 
   return (
     <>
-      <Header titulo="FILTER" theme={theme} setTheme={toggleTheme}></Header>
+      <Header titulo="FILTER" theme={theme} setTheme={cambiarTema}></Header>
 
       <div className="container mx-auto p-4 flex flex-col md:flex-row gap-8">
         {/* Formulario de filtro (columna en móviles, fila en pantallas grandes) */}
@@ -96,10 +85,10 @@ const Filtro = () => {
 
         {/* Lista de Pokémon (columna en móviles, fila en pantallas grandes) */}
         <div className="w-full md:w-3/4 max-h-[700px] overflow-y-auto bg-sky-800 platinum:bg-amber-800 pearl:bg-pink-700 p-4 rounded-md custom-scrollbar">
-          <FilteredList data={filteredPokemons} />
+          <FilteredList data={filteredPokemons} theme={theme}/>
         </div>
       </div>
-      
+
       <Footer></Footer>
     </>
   );
