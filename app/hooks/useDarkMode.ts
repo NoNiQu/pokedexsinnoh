@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 
-type Theme = "diamond" | "pearl" | "platinum" | "system";
+type Theme = "diamond" | "pearl" | "platinum";
 
 export function useDarkMode() {
 
-  // El código es el de JE pero con algunos cambios para añadir los 3 temas. Puede que haga falta quitar algo, porque quité el tema system.
+  // El código es el de JE pero con algunos cambios para añadir los 3 temas.
   const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window === "undefined") return "diamond"; // Evita errores en SSR
+    if (typeof window === "undefined") return "diamond";
     return (localStorage.getItem("theme") as Theme) || "diamond";
   });
 

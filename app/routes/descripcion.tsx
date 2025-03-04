@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import Imagen from "~/componentes/image";
 import Header from "~/componentes/header";
 import Footer from "~/componentes/footer";
@@ -8,6 +9,7 @@ import CabeceraPokemon from "~/componentes/cabeceraPokemon";
 import StatsPokemon from "~/componentes/statsPokemon";
 import DescripcionPokemon from "~/componentes/descripcionPokemon";
 import Arrow from "~/componentes/Arrow";
+import { useDarkMode } from "~/hooks/useDarkMode";
 
 const fetchPokemonById = async (id: string) => {
   const res = await fetch(`http://localhost:8080/api/pokedex_sinnoh/${id}`);
@@ -17,6 +19,31 @@ const fetchPokemonById = async (id: string) => {
 
 const Descripcion = () => {
   const { id } = useParams(); // Obtiene el ID de la URL
+
+
+
+
+  const tema = useDarkMode();
+  const [theme, setTheme] = useState(tema.theme);
+  
+  useEffect(() => {   // Si cambia el Theme, hay que cambiar el Sprite y la Descripción del Pokémon.
+    if (theme == "platinum") {
+      console.log ("Platino")
+    } else {
+      console.log ("Diamante Perla")
+    }
+  }, [theme]);
+  
+  
+  const toggleTheme = () => {
+    setTheme((prev) =>
+      prev === "diamond" ? "pearl" : prev === "pearl" ? "platinum" : "diamond"
+    );
+    tema.toggleTheme();
+  };
+
+
+
 
   const {
     data: selectedPokemon,
@@ -43,12 +70,12 @@ const Descripcion = () => {
 
   return (
     <>
-      <Header titulo="INFO"></Header>
+      <Header titulo="INFO" theme={theme} setTheme={toggleTheme}></Header>
       <div className="container mx-auto p-4 text-white pb-20 mt-20">
         <div className="flex flex-col md:flex-row justify-center gap-6 mb-6">
           {/* Imagen del Pokémon (solo columna en móviles) */}
           <div className="flex justify-center w-full md:w-auto">
-            <Imagen imagen={selectedPokemon.spriteDiamantePerla} />
+            <Imagen imagen={`${theme == "platinum" ? selectedPokemon.spritePlatino : selectedPokemon.spriteDiamantePerla }`} />
           </div>
 
           {/* Descripción y demás información del Pokémon */}
@@ -63,7 +90,7 @@ const Descripcion = () => {
               </div>
             </div>
             <DescripcionPokemon
-              descripcion={selectedPokemon.descripcionDiamantePerla}
+              descripcion={`${theme == "platinum" ? selectedPokemon.descripcionPlatino : selectedPokemon.descripcionDiamantePerla }`}
             ></DescripcionPokemon>
           </div>
         </div>

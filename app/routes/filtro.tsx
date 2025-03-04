@@ -5,6 +5,7 @@ import Header from "~/componentes/header";
 import Footer from "~/componentes/footer";
 import { useState, useEffect } from "react";
 import "./global.css";
+import { useDarkMode } from "~/hooks/useDarkMode";
 
 const Filtro = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
@@ -19,6 +20,32 @@ const Filtro = () => {
       })
       .catch((error) => console.error("Error fetching Pokémon:", error));
   }, []);
+
+
+
+  const tema = useDarkMode();
+  const [theme, setTheme] = useState(tema.theme);
+
+  useEffect(() => {   // Si cambia el Theme, hay que cambiar el Sprite y la Descripción del Pokémon.
+    if (theme == "platinum") {
+      console.log ("Platino")
+    } else {
+      console.log ("Diamante Perla")
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) =>
+      prev === "diamond" ? "pearl" : prev === "pearl" ? "platinum" : "diamond"
+    );
+    tema.toggleTheme();
+  };
+
+
+
+
+
+
 
   const handleFilter = ({
     name,
@@ -59,7 +86,8 @@ const Filtro = () => {
 
   return (
     <>
-      <Header titulo="FILTER"></Header>
+      <Header titulo="FILTER" theme={theme} setTheme={toggleTheme}></Header>
+
       <div className="container mx-auto p-4 flex flex-col md:flex-row gap-8">
         {/* Formulario de filtro (columna en móviles, fila en pantallas grandes) */}
         <div className="w-full md:w-1/4 p-4 rounded-lg">
@@ -71,6 +99,7 @@ const Filtro = () => {
           <FilteredList data={filteredPokemons} />
         </div>
       </div>
+      
       <Footer></Footer>
     </>
   );

@@ -1,7 +1,12 @@
 import { useDarkMode } from "../hooks/useDarkMode";
 
-function ThemeToggle() {
-  const { theme, toggleTheme } = useDarkMode();
+interface ThemeToggleProps {
+  theme: string,
+  toggleTheme: () => void
+}
+
+function ThemeToggle({theme, toggleTheme} : ThemeToggleProps) {
+  // const { theme, toggleTheme } = useDarkMode();
 
   return (
     <button
