@@ -56,4 +56,4 @@ Como ya se ha explicado anteriormente, hemos creado una API propia para poder ac
 
 ## 6. Enlaces de interés.
 
-- [Enlace a la página desplegada con Vercel]()
+- [Enlace a la página desplegada con Vercel](https://pokedexsinnoh.vercel.app/)
