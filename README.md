@@ -3,7 +3,7 @@
 - Autores: Diego Fernández Lozano & Marcos Alarcón Alguacil
 - Asignatura: Desarrollo de Aplicaciones Web en Entorno Cliente
 - Curso: S2DAW
-- Fecha de entrega: --/03/2025
+- Fecha de entrega: 05/03/2025
 
 ## 1. Descripción de la práctica.
 El objetivo de esta práctica consiste en acceder a los datos de una API mediante AJAX, para mostrarlos meidante una aplicación de página única utilizando React Router, con varias rutas.
@@ -14,6 +14,16 @@ Nuestra página, similar a la anterior, trata sobre Pokémon; y nuestro objetivo
 Para crear nuestra aplicación, hemos preparado una API propia con todos los datos que necesitamos de todos los pokémon de Sinnoh. De esta forma solucionamos un problema que tuvimos con la API anterior, la [PokéAPI](https://pokeapi.co/), pues aunque es más completa, distribuye los datos de una forma confusa que complica la codificación de la aplicación, además de que contiene información de todos los pokémon existentes, mientras que nosotros solamente vamos a mostrar una pequeña parte de ellos.
 
 Por ello hemos decidido apostar por crear una API (por ahora en local) con solamente la información que vamos a mostrar, con una estructura simple que nos permita navegar por ella de una forma cómoda.
+
+### 1.2. Instalar la API.
+Para tener operativa la API hay que hacer pasos previos para ello.
+
+1. Instalar IntelliJ (Comunity o Ultimate), MySQL y MySQL Workbench.
+2. Descomprimir el fichero API.rar.
+3. Abrir el pokemons.sql en el MySQL Workbench.
+4. Crear el usuario y luego cargar el resto de sql.
+5. Descomprimir el sinnohapi.rar y abrir la carpeta en el IntelliJ.
+6. Darle al play y comprobar que funciona correctamente la api en: http://localhost:8080/api/
 
 ## 2. Explicación de la aplicación.
 Nuestra aplicación consiste en una página web (**home**) que contiene la lista de todos los Pokémon de la región de Sinnoh, en formato simplificado (listando su ID y su nombre) y acompañado por su sprite (imagen compuesta de píxeles) y sus tipos. Adicionalmente se muestra el icono en pequeño del pokémon y un tipo de pokéball según su fase evolutiva.  
