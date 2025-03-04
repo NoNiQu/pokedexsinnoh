@@ -47,6 +47,22 @@ Todo este proyecto los hemos creado con Vite, un gestor que nos permite instalar
 ## 4. Instrucciones de instalación.
 Ya que hemos utilizado Vite para la creación del proyecto, es necesario instalar Node para ejecutar correctamente el proyecto.
 
+1. Instalar node y sus dependencias utilizando el gestor de paquetes NPM: 
+```bash
+npm install
+```
+
+2. Lanzar la aplicación con node:
+```bash
+npm run dev
+```
+La aplicación web responderá a la dirección `http://localhost:5173`.
+
+3. Opcionalmente se puede crear una build de la aplicación:
+```bash
+npm run build
+```
+
 ## 5. Documentación de la API.
 Como ya se ha explicado anteriormente, hemos creado una API propia para poder acomodar los datos de una forma sencilla y eficaz. Por ello vamos a explicar cómo funciona.
 
