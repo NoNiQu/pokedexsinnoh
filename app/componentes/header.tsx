@@ -1,21 +1,20 @@
 import ThemeToggle from "./themeToggle";
 import { Link } from "react-router-dom";
-import clsx from "clsx";
 
 interface HeaderProps {
   titulo: string;
   search?: boolean;
-  theme?: "default" | "platinum" | "pearl"; // Definimos los temas disponibles
+  theme?: "default" | "platinum" | "pearl";
 }
 
 function Header({ titulo, search = false, theme = "default" }: HeaderProps) {
   return (
-    <header className="flex justify-between items-center py-1 px-8 bg-sky-800 platinum:bg-amber-800 pearl:bg-pink-700">
-      <div className="text-white rounded-4xl px-10 py-2">
-        <h1 className="text-5xl font-bold">{titulo}</h1>
+    <header className="flex flex-col md:flex-row justify-between items-center py-2 px-8 bg-sky-800 platinum:bg-amber-800 pearl:bg-pink-700">
+      <div className="text-white text-center md:text-left rounded-4xl px-6 py-2">
+        <h1 className="text-3xl md:text-5xl font-bold">{titulo}</h1>
       </div>
 
-      <div className="flex gap-4">
+      <div className="flex w-full md:w-auto justify-between md:justify-end gap-4 mt-4 md:mt-0">
         <ThemeToggle />
         {search ? (
           <Link

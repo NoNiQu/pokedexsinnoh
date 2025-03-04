@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-// import Card from "~/componentes/card";
 import type { Pokemon } from "~/types/pokemon";
 import ListPokemon from "~/componentes/ListPokemon";
 import Imagen from "~/componentes/image";
@@ -24,13 +23,11 @@ const Home = () => {
     queryFn: fetchPokemon,
   });
 
-  // Estado para almacenar el Pokémon seleccionado
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
 
-  // Actualiza selectedPokemon cuando los datos estén disponibles
   useEffect(() => {
     if (data.length > 0 && !selectedPokemon) {
-      setSelectedPokemon(data[0]); // Usa el primer Pokémon al cargar los datos
+      setSelectedPokemon(data[0]);
     }
   }, [data]);
 
@@ -45,18 +42,20 @@ const Home = () => {
 
   return (
     <>
-      <Header titulo="POKéDEX SINNOH" search={true}></Header>
+      <Header titulo="POKéDEX SINNOH" search={true} />
 
-      <div className="container mx-auto p-4 flex justify-between gap-8 text-white pb-20">
-        <div className="flex flex-col gap-4 items-center justify-center flex-grow">
+      <div className="container mx-auto p-4 flex flex-col md:flex-row justify-between gap-8 text-white pb-20">
+        {/* Oculta en móviles y muestra en pantallas medianas o más grandes */}
+        <div className="hidden md:flex flex-col gap-4 items-center justify-center flex-grow">
           {selectedPokemon && (
             <>
               <Imagen imagen={selectedPokemon.spriteDiamantePerla} />
-              <Tipos tipos={selectedPokemon.tipo}></Tipos>
+              <Tipos tipos={selectedPokemon.tipo} />
             </>
           )}
         </div>
 
+        {/* La lista de Pokémon siempre visible */}
         <ListPokemon
           dataPokemon={data}
           selectedPokemon={selectedPokemon}
@@ -64,7 +63,7 @@ const Home = () => {
         />
       </div>
 
-      <Footer></Footer>
+      <Footer />
     </>
   );
 };
