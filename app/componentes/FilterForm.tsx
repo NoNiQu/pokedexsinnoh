@@ -43,12 +43,12 @@ function FilterForm({ onFilter, onReset }: FilterFormProps) {
         onChange={(e) => setType(e.target.value)}
         className="w-full p-2 border rounded-md mt-2"
       >
-        <option value="">ANY</option>
+        <option value="">Any</option>
         <option value="normal">Normal</option>
         <option value="fire">Fire</option>
         <option value="water">Water</option>
         <option value="grass">Grass</option>
-        <option value="electric">Electric</option>
+        <option value="elec">Electric</option>
         <option value="ice">Ice</option>
         <option value="fighting">Fighting</option>
         <option value="steel">Steel</option>
